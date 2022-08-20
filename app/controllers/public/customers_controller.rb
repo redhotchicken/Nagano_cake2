@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update

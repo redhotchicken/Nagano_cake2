@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :public do
     root to: "homes#top"
     get 'about'=>"homes#about"
-    patch 'customers/withdraw/:id', to: 'customers#withdraw', as: "customers/withdraw"
+    patch 'customers/withdrawal/:id', to: 'customers#withdrawal', as: "customers/withdrawal"
     resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update, :quit]
     resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]

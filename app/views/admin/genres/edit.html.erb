@@ -5,9 +5,9 @@
   <div class="mt-5">
     <%= form_with model: @genre, url:admin_genre_path(@genre) do |f| %>
       <div class ="row">
-        <div class="col-md-3 text-center">ジャンル編集</div>
+        <div class="col-md-3 text-center">ジャンル名</div>
         <div class="col-md-3 text-center">
-          <%= f.text_field :name, autocomplete: "name", class:"form-control",placeholder: 'ジャンル名' %>
+          <%= f.text_field :name, autocomplete: "name", class:"form-control", placeholder: 'ジャンル名' %>
         </div>
         <div class="col-md-3 text-center">
           <%= f.submit ' 変更を保存 ', class: "btn btn-sm btn-success" %>

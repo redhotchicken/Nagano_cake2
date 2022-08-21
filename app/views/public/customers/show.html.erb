@@ -1,42 +1,64 @@
 <div class="container">
 
-<h4>マイページ</h4>
-<h5><strong>登録情報</strong>
-<%= link_to  "編集する", edit_public_customer_path(@customer),class:"btn btn-success" %></h5>
+  <div class="row">
+    <h4>マイページ</h4>
+  </div>
 
-<table border="1">
-  <tr>
-  <th bgcolor="gray">氏名</th>
-  <td><%= @customer.last_name %>
-  <%= @customer.first_name %></td>
-  </tr>
-  <tr>
-  <th bgcolor="gray">カナ</th>
-  <td><%= @customer.last_kana %>
-  <%= @customer.first_kana %></td>
-  </tr>
-  <tr>
-  <th bgcolor="gray">郵便番号</th>
-  <td><%= @customer.post_code %></td>
-  </tr>
-  <tr>
-  <th bgcolor="gray">住所</th>
-  <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-  <th bgcolor="gray">電話番号</th>
-  <td><%= @customer.tell %></td>
-  </tr>
-  <tr>
-  <th bgcolor="gray">メールアドレス</th>
-  <td><%= @customer.email %></td>
-  </tr>
-</table>
+  <div class="row">
+    <h5><strong>登録情報</strong>
+    <%= link_to  "編集する", edit_public_customer_path(@customer),class:"btn btn-success" %></h5>
+  </div>
 
-<h5><strong>配送先</strong>
-<%= link_to "一覧を見る", public_deliveries_path, class:"btn btn-primary" %></h5>
+  <div class="row-md-1">
+    <table border="1">
+      <tr>
+      <th bgcolor="whitesmoke">氏名</th>
+      <td><%= @customer.last_name %>
+      <%= @customer.first_name %></td>
+      </tr>
+      <tr>
+      <th bgcolor="whitesmoke">カナ</th>
+      <td><%= @customer.last_kana %>
+      <%= @customer.first_kana %></td>
+      </tr>
+      <tr>
+      <th bgcolor="whitesmoke">郵便番号</th>
+      <td><%= @customer.post_code %></td>
+      </tr>
+      <tr>
+      <th bgcolor="whitesmoke">住所</th>
+      <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+      <th bgcolor="whitesmoke">電話番号</th>
+      <td><%= @customer.tell %></td>
+      </tr>
+      <tr>
+      <th bgcolor="whitesmoke">メールアドレス</th>
+      <td><%= @customer.email %></td>
+      </tr>
+    </table>
+  </div>
 
-<h5><strong>注文履歴</strong>
-<%= link_to "一覧を見る", public_orders_path, class:"btn btn-primary"%></h5>
+  <div class="row">
+    <div class="col-md-3">
+      <h5><strong>配送先</strong>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "一覧を見る", public_deliveries_path, class:"btn btn-primary" %></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <h5><strong>注文履歴</strong>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "一覧を見る", public_orders_path, class:"btn btn-primary"%></h5>
+    </div>
+  </div>
 
 </div>
+
+
+<li class ="rounded border border-dark"><%= link_to "ログアウト",  destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %></li>

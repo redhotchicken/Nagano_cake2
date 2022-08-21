@@ -8,8 +8,13 @@ class Admin::GenresController < ApplicationController
   
   def create
     @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to admin_genres_path, notice: "ジャンルが新規登録されました"
+    if @genre.save
+      flash[:notice] = "ジャンルが登録されました。"
+      redirect_to admin_genres_path
+    else
+      flash[:notice] = "ジャンル名が空白または重複しています。"
+      redirect_to admin_genres_path
+    end
   end
   
   def edit
@@ -19,8 +24,10 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
+      flash[:notice] = "ジャンルが変更されました。"
       redirect_to admin_genres_path
     else
+      flash[:notice] = "ジャンル名が空白または重複しています。"
       render 'edit'
     end
   end

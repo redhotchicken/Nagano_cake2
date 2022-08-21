@@ -1,0 +1,6 @@
+<%= image_tag item.get_item_image, size:'100x100' %>
+<p class="font-weight-bold"><%= item.name %></p>
+<%= item.description %>
+<p>¥<%= item.price %>（税込）</p>
+<%= f.select :amount, [include_blank: '個数選択', 1,2,3,4,5] %>
+<%= link_to "カートに入れる", public_cart_items_path, class="btn btn-success" %>

@@ -3,6 +3,7 @@ class Admin::ItemsController < ApplicationController
   
   def index
     @items = Item.page(params[:page]).per(10)
+    
   end
   
   def new
@@ -12,8 +13,10 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_item_path(@item), notice: "商品が登録されました"
+      flash[:notice] = "商品が登録されました。"
+      redirect_to admin_items_path(@item)
     else
+      flash[:notice] = "商品の登録内容に不備があります。"
       render "new"
     end
   end
@@ -29,15 +32,17 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to admin_item_path(@item), notice: "商品が編集されました"
+      flash[:notice] = "商品内容が変更されました。"
+      redirect_to admin_item_path(@item)
     else
+      flash[:notice] = "商品の内容変更に不備があります。"
       render "edit"
     end
   end
   
   private
   def item_params
-    params.require(:item).permit(:image, :name, :description, :genre_id, :price, :is_status, )
+    params.require(:item).permit(:image, :name, :description, :genre_id, :price, :is_active )
   end
   
 end

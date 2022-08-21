@@ -1,4 +1,4 @@
-<div class="container pt-5 ">
+<div class="container pt-5">
   <div class="row">
     <div class="md-3">
       <h3>商品一覧</h3>
@@ -34,7 +34,7 @@
                 <%= item.genre.name %>
               </td>
               <td>
-                <% if item.is_status == true %>
+                <% if item.is_active == true %>
                   <span class="text text-success">販売中</span>
                 <% else %>
                   <span class="text text-muted">販売停止中</span>

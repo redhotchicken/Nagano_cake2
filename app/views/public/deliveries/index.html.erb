@@ -3,8 +3,9 @@
   <div class='row'>
     <h3 class="title"><strong>配送先登録/一覧</strong></h3>
   </div>
+  
   <div class='row'>
-    <%= form_with model:@delivey, url:public_deliveries_path,method: :post do |f| %>
+    <%= form_with model:@delivery, url:public_deliveries_path do |f| %>
       <div class="form-group">
          <%= f.label :"郵便番号(ハイフンなし)" %>
          <%= f.text_field :post_code %>
@@ -25,24 +26,26 @@
 
   <div class='row'>
 
-    <% @deliveries.each do |derivery| %>
-      <table>
-        <tr bgcolor="silver">
-          <th>郵便番号</th>
-          <th>住所</th>
-          <th>宛名</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td><%= derivery.post_code %></td>
-          <td><%= derivery.address %></td>
-          <td><%= derivery.name %></td>
-          <td><%= link_to "編集する", edit_public_derivery(derivery) %>
-              <%= link_to "削除する", public_delivery_path, method: :delete %></td>
-        </tr>
+      <table border="1">
+        <% @deliveries.each do |derivery| %>
+          <tr bgcolor="silver">
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td><%= derivery.post_code %></td>
+            <td><%= derivery.address %></td>
+            <td><%= derivery.name %></td>
+            <td><%= link_to "編集する", edit_public_derivery(delivery) %>
+                <%= link_to "削除する", public_delivery_path(delivery), method: :delete %></td>
+          </tr>
+          <% end %>
       </table>
-    <% end %>
 
   </div>
+<%= link_to "削除する", public_delivery_path(@deliveries), method: :delete %>
+
 
 </div>

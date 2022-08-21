@@ -2,7 +2,8 @@ class Public::DeliveriesController < ApplicationController
 
   def index
     @deliveries = Delivery.all
-    @delivery = current_customer
+    @delivery = Delivery.new(delivery_params)
+    @delivery.save
   end
 
   def edit
@@ -13,14 +14,13 @@ class Public::DeliveriesController < ApplicationController
 
   def create
     @delivery = Delivery.new(delivery_params)
-    @delivery.id = current_customer.id
     if @delivery.save
     redirect_to public_deliveries_path
     end
   end
 
   def update
-    @delivery.id = current_customer.id
+    @delivery = Delivery.find(params[:id])
     @delivery.update
   end
 
@@ -32,7 +32,7 @@ class Public::DeliveriesController < ApplicationController
   private
 
   def delivery_params
-    params.require(:delivery).permit(:name, :post_code, :address)
+    params.require(:delivery).permit(:member_id, :name, :post_code, :address)
   end
 
 end

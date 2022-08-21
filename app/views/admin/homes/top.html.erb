@@ -1,16 +1,21 @@
 <h1>
-  <strong>
-    <%= @customer.last_name %>
-    <%= @customer.first_name %>
-  </strong>さんの
-  <strong>注文履歴</strong>
+  <strong>注文履歴一覧</strong>
 </h1>
 <table class="table">
   <thead>
     <tr>
       <th>購入日時</th>
+      <th>購入者</th>
       <th>注文個数</th>
       <th>注文ステータス</th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <td><%= @orders.create_at %></td>
+      <td><%= @orders.name %></td>
+      <td><%= @order_item.amount %></td>
+      <td><%= @orders.status %></td>
+    </tr>
+  </tbody>
 </table>

@@ -1,11 +1,14 @@
 class Public::CostomersController < ApplicationController
   
   def show
+    @customer =Customer.find(params[:id])
+    @customer = current_customer
+
   end
-  
+
   def edit
-  end 
-  
+  end
+
   def update
   end
   
@@ -16,3 +19,8 @@ class Public::CostomersController < ApplicationController
   end
   
 end
+<<<<<<<<< saved version
+
+=========
+
+>>>>>>>>> local version

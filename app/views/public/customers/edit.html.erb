@@ -2,42 +2,43 @@
 
   <%= form_with model: @customer, url: public_customer_path do |f| %>
   
-  <div class="field">
+  <div class="form-group">
     <p>氏名</p>
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
     <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <p>フリガナ</p>
     <%= f.text_field :last_kana, autofocus: true, autocomplete: "last_kana" %>
     <%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :郵便番号 %>
     <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :住所 %>
     <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :電話番号 %>
     <%= f.text_field :tell, autofocus: true, autocomplete: "tell" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :メールアドレス %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit "変更内容を保存", class: "btn btn-sm btn-success" %>
-    <%= f.submit "退会する", class: "btn btn-danger" %>
+    <%= link_to "退会する", public_customers_quit_path, class: "btn btn-danger" %>
+ 
   </div>
   
   <% end %>

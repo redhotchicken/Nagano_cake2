@@ -7,8 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+#ジャンル名
+Genre.create!(
+  name: "ケーキ",
+)
+Genre.create!(
+  name: "プリン",
+)
+Genre.create!(
+  name: "焼き菓子",
+)
+Genre.create!(
+  name: "キャンディ",
+)
+  
+
+#管理者用ログイン情報
 Admin.create!(
     email: 'admin@admin.com',
     password: '123456',
 )
-

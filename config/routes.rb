@@ -16,9 +16,9 @@ Rails.application.routes.draw do
     get 'about'=>"homes#about"
     patch 'customers/withdrawal/:id', to: 'customers#withdrawal', as: "customers/withdrawal"
     resources :items, only:[:index, :show]
-    resources :customers, only:[:show, :edit, :update, :quit]
-    resources :cart_items, only:[:index, :update, :destroy, :create]
-    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all', as: "cart_items/destroy_all"
+    resources :customers, only:[:show, :edit, :update]
+    get 'customers/quit', to: 'customers#quit', as: "customers/quit"
+    resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only:[:new, :check, :complete, :create, :index, :show]
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
   end

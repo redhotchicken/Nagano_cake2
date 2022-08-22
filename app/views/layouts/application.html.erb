@@ -6,8 +6,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -54,15 +56,16 @@
           </div>
         </nav>
         </div>
-        <div class="container ml-5">
-        <div class="row justify-content-end">
-          <div class="col-x2-s">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <div class="container ml-auto">
+          <div class="row justify-content-end">
+            <div class="col-x2-s">
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <i="fas fa-search"></i>
+              </form>
 
-            </form>
+            </div>
           </div>
-        </div>
         </div>
 
     </header>
@@ -70,5 +73,5 @@
 
     <%= yield %>
   </body>
-  
+
 </html>

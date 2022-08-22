@@ -16,8 +16,8 @@
     <div class="form-inline">
       <h2><strong>新着商品</strong></h2>
       <% @items.each do |item| %>
-      <%= image_tag item.item_image %>
-      <%= item.item_name %>
+      <%= image_tag item.image %>
+      <%= item.name %>
       <%= item.price %>
       <% end %>
 

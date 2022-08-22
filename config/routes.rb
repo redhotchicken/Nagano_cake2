@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'orders/complete', to: 'orders#complete', as: "orders/complete"
     post 'orders/check', to: 'orders#check', as: "orders/check"
     resources :items, only:[:index, :show]
-    resources :customers, only:[:show, :edit, :update, :quit]
+    resources :customers, only:[:show, :edit, :update]
     resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
     resources :orders, only:[:new, :create, :index, :show]
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]

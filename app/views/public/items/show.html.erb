@@ -1,6 +1,18 @@
-<%= image_tag item.get_item_image, size:'100x100' %>
-<p class="font-weight-bold"><%= item.name %></p>
-<%= item.description %>
-<p>¥<%= item.price %>（税込）</p>
-<%= f.select :amount, [include_blank: '個数選択', 1,2,3,4,5] %>
-<%= link_to "カートに入れる", public_cart_items_path, class="btn btn-success" %>
+<div class=”container”>
+  <div class=”row”>
+    <div class=”col-md-6”>
+      <%= image_tag @item.get_image(100,100) %>
+    </div>  
+    
+    <div class=”col-md-6”>
+     <p class="font-weight-bold"><%= @item.name %></p>
+       <%= @item.description %>
+     <p>¥<%= @item.price.to_s(:delimited) %>（税込）</p>
+    </div>
+    
+    <%= form_with model:@cart_item, url:public_cart_items_path, local:true do |f| %>
+      <%= f.select :amount,(1..5).to_a, include_blank:'個数選択' %>
+      <%= f.submit "カートに入れる", class:"btn btn-success" %>
+    <% end %>
+  </div>
+</div>

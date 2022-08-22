@@ -1,16 +1,16 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row-md-10">
     <h4>マイページ</h4>
   </div>
 
-  <div class="row">
+  <div class="row-md-1">
     <h5><strong>登録情報</strong>
     <%= link_to  "編集する", edit_public_customer_path(current_customer), class:"btn btn-success" %></h5>
   </div>
 
   <div class="row-md-1">
-    <table border="1">
+    <table border="1" cellpadding="10">
       <tr>
       <th bgcolor="whitesmoke">氏名</th>
       <td><%= @customer.last_name %>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <h5><strong>配送先</strong>
     </div>
     <div class="col-md-3">
@@ -50,7 +50,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <h5><strong>注文履歴</strong>
     </div>
     <div class="col-md-3">

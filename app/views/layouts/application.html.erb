@@ -60,7 +60,9 @@
         </form>
 
     </header>
-    <p id="notice"><%= notice %></p>
+    <%# deivseのフラッシュメッセージを表示 %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
     <%= yield %>
   </body>

@@ -6,3 +6,8 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+      
+  activerecord:
+    attributes:
+      admin:
+        email: メールアドレス

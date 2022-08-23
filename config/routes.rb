@@ -15,11 +15,16 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get 'about'=>"homes#about"
     patch 'customers/withdrawal/:id', to: 'customers#withdrawal', as: "customers/withdrawal"
+
+    get 'orders/complete', to: 'orders#complete', as: "orders/complete"
+    post 'orders/check', to: 'orders#check', as: "orders/check"
+
     get 'customers/quit', to: 'customers#quit', as: "customers/quit"
+
     resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update]
     resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
-    resources :orders, only:[:new, :check, :complete, :create, :index, :show]
+    resources :orders, only:[:new, :create, :index, :show]
     resources :deliveries, only:[:index, :edit, :create, :update, :destroy]
   end
 

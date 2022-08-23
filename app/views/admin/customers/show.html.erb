@@ -1,13 +1,16 @@
 <div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-6'>
-      <h1 class="bg-light mt-4">
+  <h2 class="mt-4 mr-5">
+    <span class="bg-light">
         <strong>
           <%= @customer.last_name %>
           <%= @customer.first_name %>
         </strong>さんの
         <strong>会員詳細</strong>
-      </h1>
+        </span>
+      </h2>
+  <div class='row'>
+    
+    <div class='col-md-6'>
       <table class="table ml-4">
         <tr>
           <th>会員ID</th>
@@ -48,7 +51,7 @@
           <% if @customer.is_deleted %>
             <td class="text-secondary">退会</td>
           <% else %>
-            <td class="text-success">有効</td>
+            <td class="text-succ">有効</td>
           <% end %>
         </tr>
       </table>

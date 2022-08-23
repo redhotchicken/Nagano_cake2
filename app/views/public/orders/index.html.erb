@@ -14,14 +14,14 @@
             <tbody>
             <%= @order_item each do |order_item| %>
                 <tr>
-                    <td></td>
+                    <td><%= date.strftime("%Y/%m/%d") %></td>
                     <td>
                       <%= order_item.post_code %>
                       <%= order_item.address %>
                       <%= order.item.name %>
                     </td>
                     <td><%= order_item.name %></td>
-                    <td><%= order_item.payent </td>
+                    <td><%= order_item.payent %></td>
                     <td><%= order_item.status %></td>
                     <td><%= f.submit "表示する", public_order_path, class: "btn btn-primary" %></td>
                 </tr>

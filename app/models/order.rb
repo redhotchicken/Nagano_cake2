@@ -1,7 +1,9 @@
 class Order < ApplicationRecord
-  
-  def address_display
-  '〒' + postal_code + ' ' + address + ' ' + name
-  end
+has_many:cart_items, dependent: :destroy
+belongs_to:customer
+
+enum payment_type: { credit_card: 0, transfer: 1 }
+
+
 
 end

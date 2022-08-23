@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   validates :description, presence:true
   validates :price, presence:true
   #validates :is_active, presence:true
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
@@ -17,9 +17,11 @@ class Item < ApplicationRecord
     end
       image.variant(resize_to_fit:[width, height]).processed
   end
+
   
   def tax_price
     (price*1.1).floor
   end
   
+
 end

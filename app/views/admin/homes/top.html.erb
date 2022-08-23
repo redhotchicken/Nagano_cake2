@@ -1,21 +1,28 @@
-<h1>
-  <strong>注文履歴一覧</strong>
-</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>購入日時</th>
-      <th>購入者</th>
-      <th>注文個数</th>
-      <th>注文ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><%= @orders.create_at %></td>
-      <td><%= @orders.name %></td>
-      <td><%= @order_item.amount %></td>
-      <td><%= @orders.status %></td>
-    </tr>
-  </tbody>
-</table>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3 mt-4'>
+      <h1 class="table-striped">注文履歴一覧</h1>
+      <table class="table">
+        <thead>
+          <tr class="bg-light">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.create_at %></td>
+            <td><%= order.name %></td>
+            <td><%= order.order_item.amount %></td>
+            <% if order.status %>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

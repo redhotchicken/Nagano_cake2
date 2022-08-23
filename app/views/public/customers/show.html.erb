@@ -7,15 +7,17 @@
     </div>
  </div>
 
-  <div class="row-md-1">
-    <div class="col">
+  <div class="row">
+    <div class="col-md-2">
      <h5><strong>登録情報</strong>
     </div>
-    <div class="col">
+    <div class="col-md-2">
     <%= link_to  "編集する", edit_public_customer_path(current_customer), class:"btn btn-success" %></h5>
+    </div>
   </div>
 
-  <div class="row-md-1">
+  <div class="row-mt-1">
+    <div class="col">
     <table border="1" cellpadding="10">
       <tr>
       <th bgcolor="whitesmoke">氏名</th>
@@ -44,6 +46,7 @@
       <td><%= @customer.email %></td>
       </tr>
     </table>
+    </div>
   </div>
 
   <div class="row mt-4">

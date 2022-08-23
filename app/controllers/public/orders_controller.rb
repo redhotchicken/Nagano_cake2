@@ -5,18 +5,19 @@ class Public::OrdersController < ApplicationController
   end
   
   def check
-    @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
+    @order = Order.new
+  
+    @order.post_code = current_customer.post_code
+    @order.address = current_customer.address
+    @order.name = current_customer.name
+    @order.payment_type = current_customer.payment_type
   end
   
   def complete
   end
   
   def create
-     @order = Order.new
+     @order = Order.new(order_params)
      @order = Order.save
   end
   
@@ -29,7 +30,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:payment_type, :post_code, :address, :name)
+    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id)
   end
   
 end

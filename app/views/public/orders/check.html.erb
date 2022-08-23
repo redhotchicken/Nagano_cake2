@@ -10,13 +10,14 @@
                 </tr>
             </thead>
             <tbody>
-            <%= @cart_items each do |cart_items| %>
+            <%= @cart_items each do |cart_item| %>
                 <tr>
-                    <td><%= cart_items.name %></td>
-                    <td></td>
-                    <td><%= cart_items.amount %></td>
-                    <td></td>
+                    <td><%= cart_item.name %></td>
+                    <td><%= cart_item.price %></td>
+                    <td><%= cart_item.amount %></td>
+                    <td><%= cart_item.price %></td>
                 </tr>
+            <% end %>    
             </tbody>
   </table>
   
@@ -29,15 +30,20 @@
                 </tr>
             </thead>
             <tbody>
+                <% @cart_items.each do |cart_item| %>
                 <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
+                <% end %>
             </tbody>
   </table>
 
 <p class="font-weight-bold">支払方法</p>
-<p class="font-weight-bold">お届け先</p>
+<%= @order.payment_type %>
+<p class="font-weight-bold">お届け先</p
+<%= @order.post_code, @order.address, @order.name %>
 
 <%= f.submit "注文を確定する", class: "btn btn-sm btn-success" %>
+<% end %>

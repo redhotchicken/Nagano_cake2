@@ -1,8 +1,8 @@
 class CartItem < ApplicationRecord
 
 
-  belongs_to:item
-  belongs_to:customer
+  belongs_to :item
+  belongs_to :customer
 
 # 小計を求めるメソッド
 #消費税を求めるメソッドwith_tax_priceと掛け合わせる
@@ -10,6 +10,5 @@ class CartItem < ApplicationRecord
 def subtotal
     item.with_tax_price * amount
 end
-
 
 end

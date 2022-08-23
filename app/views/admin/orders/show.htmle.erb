@@ -6,12 +6,26 @@
         <tr>
           <th>購入者</th>
           <td>
-            <%= @customer.last_name %>
-            <%= @customer.first_name %>
+            <%= link_to admin_customer_path(@orders) do %>
+              <%= @orders.last_name %>
+              <%= @orders.first_name %>
+            <% end %>
           </td>
         </tr>
         <tr>
           <th>注文日</th>
+          <td><%= @orders.create_at %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td>
+            <%= @orders.address %><br>
+            <%= @orders.last_name %>
+            <%= @orders.first_name%>
+          </td>
+        </tr>
+        <tr>
+          <th>支払い方法</th>
           <td></td>
         </tr>
       </table>

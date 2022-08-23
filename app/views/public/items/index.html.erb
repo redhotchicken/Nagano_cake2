@@ -1,0 +1,25 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+  <h3 class="font-weight-bold">商品一覧</h3>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <div class = "col-4" %>
+    <% @items.each do |item| %>
+  
+      <tr>
+        <td><%= link_to public_item_path(item.id) do %>
+          <%= image_tag item.get_image(50,50) %>
+          <% end %>
+         <p><%= item.name %></p>
+         <p>¥<%= item.price.to_s(:delimited) %></p>
+        </td>
+      </tr>
+   
+    <% end %>
+     </div>
+  </tbody>
+</table>

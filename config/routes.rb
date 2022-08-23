@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'customers/quit', to: 'customers#quit', as: "customers/quit"
 
     delete 'cart_items/destroy_all', to: 'cart_items#destroy_all', as: "cart_items/destroy_all"
+    
     resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update]
     resources :cart_items, only:[:index, :update, :destroy, :create]

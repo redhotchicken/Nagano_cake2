@@ -9,9 +9,9 @@
                     <th>小計</th>
                 </tr>
             </thead>
-        
+
             <% @cart_items.each do |cart_item| %>
-            
+
              <tbody>
                 <tr>
                     <td><%= cart_item.item.image %>
@@ -35,9 +35,9 @@
             <tbody>
                 <% @cart_items.each do |cart_item| %>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><%= @order.postage %></td>
+                    <td><%= @total += cart_item.subtotal %></td>
+                    <td><%= @order.postage + @total += cart_item.subtotal %></td>
                 </tr>
                 <% end %>
             </tbody>

@@ -7,6 +7,8 @@ class Public::OrdersController < ApplicationController
   def check
     @cart_items = current_customer.cart_items
     @order = Order.new
+    @total = 0
+    @order.postage = 800
      if params[:order][:select_address] == "0"
         @order = Order.new(order_params)
         @order.post_code = current_customer.post_code

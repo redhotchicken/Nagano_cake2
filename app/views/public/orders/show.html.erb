@@ -17,7 +17,7 @@
                     <td><%= order.name %></td>
                     <td><%= order.payent %></td>
                      <td><%= order.name %></td>
-                    <td><%= order.payent %></td>
+                    <td><%= order.payent_type %></td>
                     <td><%= order.status %></td>
                 </tr>
             <% end %>    
@@ -35,9 +35,9 @@
             <tbody>
             <% @orders.each do |order| %>
                 <tr>
-                    <td><%= order.name %></td>
-                    <td><%= order.payent %></td>
-                    <td><%= order.status %></td>
+                    <td><%= @total += cart_item.subtotal %></td>
+                    <td><%= @order.postage %></td>
+                    <td><%= @order.postage + @total += cart_item.subtotal %></td>
                 </tr>
             <% end %>    
             </tbody>

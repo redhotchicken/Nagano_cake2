@@ -16,7 +16,7 @@
           <th>会員ID</th>
           <td><%= @customer.id %></td>
         </tr>
-        <%= form_with model: @customer, url: edit_admin_customer_path(@customer) do |f| %>
+        <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
           <tr>
             <th>氏名</th>
             <td><%= f.text_field :last_name %></td>

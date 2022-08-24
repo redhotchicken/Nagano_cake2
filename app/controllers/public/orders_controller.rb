@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @order = Order.new
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @order_postage = 800
+    @postage = 800
      if params[:order][:select_address] == "0"
         @order = Order.new(order_params)
         @order.post_code = current_customer.post_code
@@ -36,9 +36,12 @@ class Public::OrdersController < ApplicationController
   def create
      @order = Order.new(order_params)
      @order.customer_id = current_customer.id
-     cart_items = current_customer.cart_items.all
+     @cart_items = current_customer.cart_items.all
+     @postage = 800
+     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+     @order.payment = (@total + @postage)
      if @order.save
-        cart_items.each do |cart|
+        @cart_items.each do |cart|
             # 取り出したカートアイテムの数繰り返します
             # order_item にも一緒にデータを保存する必要があるのでここで保存します
             order_item = OrderItem.new
@@ -50,10 +53,10 @@ class Public::OrdersController < ApplicationController
             # カート情報を削除するので item との紐付けが切れる前に保存します
             order_item.save
         end
-
-            cart_items.destroy_all
+            redirect_to public_orders_complete_path
+            @cart_items.destroy_all
             # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
-             redirect_to public_orders_complete_path
+
      else
        @order = Order.new(order_params)
        render:new
@@ -62,9 +65,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
-    @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @order_postage = 800
+    @postage = 800
 
   end
 
@@ -75,7 +76,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id, :payment, :status)
+    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id, :payment, :status, :postage)
   end
 
 end

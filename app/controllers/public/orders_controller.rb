@@ -33,6 +33,13 @@ class Public::OrdersController < ApplicationController
   def create
      @order = Order.new(order_params)
      @order = Order.save
+    # @order.postage = 800
+    # @order.payment =  
+    # @cart_items = current_user.cart_items.all
+     
+     
+    # @cart_items.destroy_all
+    
   end
 
   def index

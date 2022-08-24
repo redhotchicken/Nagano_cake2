@@ -62,6 +62,9 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.all
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @order_postage = 800
 
   end
 
@@ -72,7 +75,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id)
+    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id, :payment, :status)
   end
 
 end

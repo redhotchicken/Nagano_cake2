@@ -7,19 +7,19 @@
   </thead>
 
   <tbody>
+      <div class = "col-4" %>
     <% @items.each do |item| %>
+  
       <tr>
         <td><%= link_to public_item_path(item.id) do %>
           <%= image_tag item.get_image(50,50) %>
           <% end %>
-        </td>
-        <td>
-         <p>商品名<%= item.name %></p>
-        </td>
-        <td>
-         <p>¥<%= item.price %></p>
+         <p><%= item.name %></p>
+         <p>¥<%= item.price.to_s(:delimited) %></p>
         </td>
       </tr>
+   
     <% end %>
+     </div>
   </tbody>
 </table>

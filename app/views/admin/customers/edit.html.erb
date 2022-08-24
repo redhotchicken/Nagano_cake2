@@ -8,9 +8,9 @@
 <table class="table">
   <tr>
     <th>会員ID</th>
-    <td><%= @customer.customers_id %></td>
+    <td><%= @customer.id %></td>
   </tr>
-  <%= form_with model: @customer do |f| %>
+  <%= form_with model: @customer, url: edit_admin_customer_path(@customer) do |f| %>
     <tr>
       <th>氏名</th>
       <td><%= f.text_field :last_name %></td>
@@ -35,7 +35,10 @@
     </tr>
     <tr>
       <th>会員ステータス</th>
-      <td>有効 退会</td>
+      <td>
+        <%= f.label :is_deleted, '退会', value: 1 %>
+        <%= f.radio_button :is_deleted, '1' %>
+      </td>
     </tr>
   <% end %>
 </table>

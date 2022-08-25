@@ -12,7 +12,6 @@ ja:
       admin:
         email: メールアドレス
 
-  # 日本語の設定を行う
   enums: # enumの設定を行う
     order: # モデル名（Orderモデルに対して）
       payment_type: # カラム名（payment_methodカラムに対して）

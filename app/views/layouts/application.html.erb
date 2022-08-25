@@ -34,11 +34,11 @@
             <% elsif admin_signed_in?  %>
 
                <ul class="navbar-nav ml-auto">
-                  <li class ="rounded border border-dark mr-5"><%= link_to "商品一覧", admin_items_path,class: 'nav-link text-dark'%></li>
-                  <li class ="rounded border border-dark mr-5"><%= link_to "会員一覧", admin_customers_path,class: 'nav-link text-dark'%></li>
-                  <li class ="rounded border border-dark mr-5"><%= link_to "注文履歴一覧",admin_root_path,class: 'nav-link text-dark'%></li>
-                  <li class ="rounded border border-dark mr-5"><%= link_to "ジャンル一覧",admin_genres_path,class: 'nav-link text-dark'%></li>
-                  <li class ="rounded border border-dark mr-5"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark'%></li>
+                  <li class ="rounded border border-dark mr-3"><%= link_to "商品一覧", admin_items_path,class: 'nav-link text-dark'%></li>
+                  <li class ="rounded border border-dark mr-3"><%= link_to "会員一覧", admin_customers_path,class: 'nav-link text-dark'%></li>
+                  <li class ="rounded border border-dark mr-3"><%= link_to "注文履歴一覧",admin_root_path,class: 'nav-link text-dark'%></li>
+                  <li class ="rounded border border-dark mr-3"><%= link_to "ジャンル一覧",admin_genres_path,class: 'nav-link text-dark'%></li>
+                  <li class ="rounded border border-dark mr-3"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-dark'%></li>
                </ul>
 
             <% else %>
@@ -60,9 +60,7 @@
           <div class="row justify-content-end">
             <div class="col-ml-auto mr-5">
               <form class="d-flex">
-                <i class="fas fa-search positon-relative"></i>
-                <input type="search" placeholder="Search">
-
+                <input type="text" name="search" value="" placeholder="Search　&#xf002;" style="font-family: FontAwesome;"/>
               </form>
 
             </div>

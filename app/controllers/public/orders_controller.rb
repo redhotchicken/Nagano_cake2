@@ -61,6 +61,7 @@ class Public::OrdersController < ApplicationController
        @order = Order.new(order_params)
        render:new
      end
+
   end
 
   def index

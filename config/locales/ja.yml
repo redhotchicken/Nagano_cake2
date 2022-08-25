@@ -1,0 +1,27 @@
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
+
+  activerecord:
+    attributes:
+      admin:
+        email: メールアドレス
+
+  enums: # enumの設定を行う
+    order: # モデル名（Orderモデルに対して）
+      payment_type: # カラム名（payment_methodカラムに対して）
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+
+    
+      status:
+        waiting_for_payment: "入金待ち"
+        payment_confirmation: "入金確認"
+        production: "製作中"
+        preparing_to_ship: "発送準備中"
+        sent: "発送済み"

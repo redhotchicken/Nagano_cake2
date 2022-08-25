@@ -9,7 +9,7 @@
   <tbody>
       <div class = "col-4" %>
     <% @items.each do |item| %>
-  
+
       <tr>
         <td><%= link_to public_item_path(item.id) do %>
           <%= image_tag item.get_image(100,150) %>
@@ -18,8 +18,10 @@
          <p>¥<%= item.price.to_s(:delimited) %></p>
         </td>
       </tr>
-   
+
     <% end %>
+  
      </div>
   </tbody>
+   
 </table>

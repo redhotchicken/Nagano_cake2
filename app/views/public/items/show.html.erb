@@ -2,7 +2,7 @@
 <%= image_tag @item.get_image(100,100) %>
 <p class="font-weight-bold"><%= @item.name %></p>
 <%= @item.description %>
-<p>¥<%= @item.price.to_s(:delimited) %>（税込）</p>
+<p>¥<%= @item.tax_price.to_s(:delimited) %>（税込）</p>
 
 <%= form_with model:@cart_item, url:public_cart_items_path, method: :post, local:true do |f| %>
 <%= f.hidden_field :item_id, :value => @item.id %>

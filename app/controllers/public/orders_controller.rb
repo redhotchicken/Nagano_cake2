@@ -5,7 +5,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-    @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items.all
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @postage = 800
     @order = Order.new
      if params[:order][:select_address] == "0"
         @order = Order.new(order_params)
@@ -31,20 +33,42 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+     @cart_items = current_customer.cart_items.all
      @order = Order.new(order_params)
-     @order = Order.save
+     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+     @postage = 800
+     @order.payment = (@total+@postage)
+    if @order.save
+      cart_items.each do |cart|
+        order_item = OrderItem.new
+        order_item.item_id = cart.item_id
+        order_item.order_id = @order.id
+        order_item.order_amount = cart.amount
+        order_item.save
+      end
+      redirect_to public_orders_complete_path
+      cart_items.destroy_all
+      # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
+    else
+      @order = Order.new(order_params)
+      render :new
+    end
   end
 
   def index
+    @orders = current_customer.orders.all
+
   end
 
   def show
+
+
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id)
+    params.require(:order).permit(:payment_type, :post_code, :address, :name, :customer_id, :payment, :postage, :status)
   end
 
 end

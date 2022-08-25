@@ -12,19 +12,20 @@
                 </tr>
             </thead>
             <tbody>
-            <%= @order_item each do |order_item| %>
+            <% @orders.each do |order| %>
                 <tr>
-                    <td><%= date.strftime("%Y/%m/%d") %></td>
+                    <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
                     <td>
-                      <%= order_item.post_code %>
-                      <%= order_item.address %>
-                      <%= order.item.name %>
+                      <%= order.post_code %>
+                      <%= order.address %>
+                      <%= order.name %>
                     </td>
-                    <td><%= order_item.name %></td>
-                    <td><%= order_item.payent %></td>
-                    <td><%= order_item.status %></td>
-                    <td><%= f.submit "表示する", public_order_path, class: "btn btn-primary" %></td>
+                    <td><%= order.name %></td>
+                    <td><%= order.payment %></td>
+                    <td><%= order.status %></td>
+                    <td><%= link_to "表示する", public_order_path(order), method: :delete, class: "btn btn-primary" %>
+                    </td>
                 </tr>
-            <% end %>    
+            <% end %>
             </tbody>
   </table>

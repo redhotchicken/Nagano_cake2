@@ -6,28 +6,55 @@
         <tr>
           <th>購入者</th>
           <td>
-            <%= link_to admin_customer_path(@orders) do %>
-              <%= @orders.last_name %>
-              <%= @orders.first_name %>
+            <%= link_to admin_customer_path(@order) do %>
+              <%= @order.last_name %>
+              <%= @order.first_name %>
             <% end %>
           </td>
         </tr>
         <tr>
           <th>注文日</th>
-          <td><%= @orders.create_at %></td>
+          <td><%= @order.create_at %></td>
         </tr>
         <tr>
           <th>配送先</th>
           <td>
-            <%= @orders.address %><br>
-            <%= @orders.last_name %>
-            <%= @orders.first_name%>
+            〒<%= @order.post_code %>
+            <%= @order.address %><br>
+            <%= @order.last_name %>
+            <%= @order.first_name%>
           </td>
         </tr>
         <tr>
           <th>支払い方法</th>
-          <td></td>
+          <td><%= @order.payment_type %></td>
         </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td><%= f.select :order_id, options_from_collection_for_select(Order.all, :id, :name) %></td>
+        </tr>
+      </table>
+      <table class=table"">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+            th
+          </tr>
+        </thead>
+        <% @order.each do |order| %>
+          <tbody>
+            <tr>
+              <td><%= order.item.name %></td>
+              <td><%= order.price %></td>
+              <td><%= order.amount %></td>
+              <td><%= order.%></td>
+            </tr>
+          </tbody>
+        <% end %>
       </table>
     </div>
   </div>

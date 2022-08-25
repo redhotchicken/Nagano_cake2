@@ -12,7 +12,7 @@
   
       <tr>
         <td><%= link_to public_item_path(item.id) do %>
-          <%= image_tag item.get_image(50,50) %>
+          <%= image_tag item.get_image(100,150) %>
           <% end %>
          <p><%= item.name %></p>
          <p>¥<%= item.price.to_s(:delimited) %></p>

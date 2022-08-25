@@ -1,11 +1,40 @@
+<div class="container ml-4 mt-5">
+  <div class="row">
+    <div class="col-lg-3">
+        <table class="table table-bordered ml-1">
+            <thead>
+                <th>ジャンル一覧</th>
+            </thead>
+            <tbody>
+                <% @genres.each do |genre| %>
+                <tr>
+                   <th><%= genre.name %></th>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
 
-<%= image_tag @item.get_image(100,100) %>
-<p class="font-weight-bold"><%= @item.name %></p>
-<%= @item.description %>
-<p>¥<%= @item.price.to_s(:delimited) %>（税込）</p>
 
-<%= form_with model: @cart_item, url: public_cart_items_path, method: :post, local:true do |f| %>
-<%= f.hidden_field :item_id, :value => @item.id %>
-<%= f.select :amount,(1..5).to_a, include_blank:'個数選択' %>
-<%= f.submit "カートに入れる", class:"btn btn-success" %>
-<% end %>
+    <div class="col-lg-9">
+          <div class="row">
+            <div class="col-lg-5 mt-5"  style="text-align:right">
+                  <%= image_tag @item.get_image(250,250) %>
+            </div>
+            <div class="col-lg-7">
+            　<div class="mb-1">
+                  <h2 class="font-weight-bold"><%= @item.name %></h2>
+                  <h4><%= @item.description %></h4>
+                  <div><strong class="h2">¥<%= @item.tax_price.to_s(:delimited) %></strong><small>（税込）</small></div>
+              </div>    
+                  
+              <div class="text-danger"><%= notice %></div>    
+                  <%= form_with model: @cart_item, url: public_cart_items_path, method: :post, local:true do |f| %>
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <%= f.select :amount,(1..5).to_a, include_blank:'個数選択' %>
+                  <%= f.submit "カートに入れる", class:"btn btn-success" %>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+    </div>      

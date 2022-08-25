@@ -2,6 +2,9 @@ class CartItem < ApplicationRecord
 
   belongs_to :item
   belongs_to :customer
+  
+  validates :amount, presence: true
+
 
 # 小計を求めるメソッド
 #消費税を求めるメソッドwith_tax_priceと掛け合わせる

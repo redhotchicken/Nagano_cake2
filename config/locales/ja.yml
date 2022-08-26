@@ -18,6 +18,7 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
 
+
     
       status:
         waiting_for_payment: "入金待ち"

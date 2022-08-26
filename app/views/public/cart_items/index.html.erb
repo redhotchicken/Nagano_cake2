@@ -41,13 +41,17 @@
            </td>
 
             <!-- subtotalメソッドは小計を求めるメソッド-->
-           <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+
+           <td><%= (cart_item.item.tax_price*cart_item.amount).to_s(:delimited) %></td>
+
 
            <td class="text-center">
              <%= link_to "削除する", public_cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
            </td>
          </tr>
-          <% @total += cart_item.subtotal %>
+
+         <% @total += (cart_item.item.tax_price*cart_item.amount) %>
+
         <% end %>
       </tbody>
     </table>

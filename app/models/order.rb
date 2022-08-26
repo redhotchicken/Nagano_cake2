@@ -9,11 +9,11 @@ class Order < ApplicationRecord
   # 小計を求めるメソッド
   #消費税を求めるメソッドwith_tax_priceと掛け合わせる
   #商品の税込み価格*個数
-  def with_tax_price
-      (price*1.1).floor
-  end
-  def subtotal
-      item.with_tax_price * amount
-  end
   
+  
+  
+  
+  def subtotal
+      price * amount
+  end
 end

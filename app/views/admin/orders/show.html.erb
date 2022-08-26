@@ -33,7 +33,7 @@
           <th>注文ステータス</th>
           <td>
           <%= form_with model: @order, url: admin_order_path do |f| %>
-            <%= f.select :order_id, options_from_collection_for_select(Order.all, :id, :name) %>
+            <%= f.select :status, Order.statuses_i18n.invert, {prompt: false} %>
             <%= f.submit "更新", class: "btn btn-success" %>
           <% end %>
           </td>
@@ -50,16 +50,16 @@
             th
           </tr>
         </thead>
-        <% @order_items.each do |order_item| %>
+        <% @order_item.each do |order_item| %>
           <tbody>
             <tr>
               <td><%= order_item.item.name %></td>
-              <td><%= order_item.item.tax_price %></td>
+              <td><%= order_item.item.with_tax_price %></td>
               <td><%= order_item.amount %></td>
-              <td><%= order_item.order.subtotal %></td>
+              <td><%= order_item.price*order_item.amount %></td>
               <td>
                 <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true do |f| %>
-                  <%= f.select :make_status, options_from_collection_for_select(OrderItem.all, :id, :name) %>
+                 <%= f.select :make_status, OrderItem.make_statuses_i18n.invert, {prompt: false} %>
                   <%= f.submit "更新", class: "btn btn-success" %>
                 <% end %>
               </td>

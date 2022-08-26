@@ -1,37 +1,39 @@
-<div class="container">
-  <div class="row">
-   <h5 class="-5">ログイン</h5>
-  </div> 
+<div class="container"></br>
+  <h3>
+    <span class="px-3" style="background-color:lightgray">ログイン</span>
+  </h3>
+  </br>
+  <p>
+    <span class="px-3" style="background-color:lightgray">会員の方はこちらからログイン</span>
+  </p>
+  </br>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="form-group row">
+    <%= f.label :メールアドレス, class:"col-2 col-form-label" %>
+  <div class="col-5">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>  
+</div>
 
-    <p>会員の方はこちらからログイン</p>
+ <div class="form-group row">
+    <%= f.label :パスワード, class:"col-2 col-form-label" %>
+  <div class="col-5">  
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+ </div>
+ 
+  <div class="offset-2">
+    <%= f.submit "ログイン", class: "btn btn-primary px-5" %>
+  </div>
+<% end %>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-     <form>
-      <div class="form-group row">
-        <%= f.label :メールアドレス, class:"col-2 offset-2 col-form-label" %>
-         <div class="col-md-5">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com", class:"form-control" %>
-         </div>
-      </div>
-      <div class="form-group row">
-        <%= f.label :パスワード, class:"col-2 offset-2 col-form-label" %>
-         <div class="col-md-5">
-          <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
-         </div>
-      </div>
-
-      <div class="form-group row">
-        <div class="col-2 mt-3 offset-4">
-         <%= f.submit "ログイン", class: "btn btn-primary" %>
-        </div>
-      </div>
-     </form>
-    <% end %>
-
-      <div class="form-group row">
-        <div class="col-5">
-          <p>会員登録がお済みでない方</p>
-          <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
-        </div>  
-      </div>    
+</br>
+  <p>
+   <span class="px-3" style="background-color:lightgray">会員登録がお済みでない方</span>
+  </p> 
+  
+ <div>
+   <%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+ </div>
+</div>
 

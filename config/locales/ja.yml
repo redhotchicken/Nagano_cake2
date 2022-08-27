@@ -6,3 +6,20 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+
+  activerecord:
+    attributes:
+      admin:
+        email: メールアドレス
+
+  enums: # enumの設定を行う
+    order: # モデル名（Orderモデルに対して）
+      payment_type: # カラム名（payment_methodカラムに対して）
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+
+      address:
+        customer_address: "ご自身の住所"
+        registered_address: "登録済み住所から選択"
+        new_address: "新しいお届け先"
+

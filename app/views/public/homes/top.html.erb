@@ -1,35 +1,56 @@
 <div class="container">
   <div class="row">
 
-    <div class='col-md-3'>
+    <div class='col-md-2'>
+      <div class="text-center border border-dark">
+        <h6><strong>ジャンル検索</strong></h6>
+      </div>
+      <div class="border border-dark">
+        <% @genres.each do |genre| %>
+        <p class="ml-3"><%= genre.name %></p>
+        <% end %>
+      </div>
     </div>
 
-    <div class='col-md-6 offset-md-1'>
-     <div class="border border-dark">
-      <h5>ようこそ、ながのCAKEへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。</h5>
-     </div>
+    <div class='col-md-9 offset-md-1'>
 
-    <div class="form-inline">
+      <div class="card">
+        <%= image_tag "cake.jpg" %>
+          <div class="card-img-overlay align-items-center d-flex justify-content-center">
+            <div class="col-md-8 border border-dark bg-white">
+              <strong><h5>ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。</h5></strong>
+            </div>
+          </div>
+      </div>
+
       <h2><strong>新着商品</strong></h2>
-      <% @items.each do |item| %>
-      　<%= image_tag item.get_image(100,100)%>
-      　<%= item.name %>
-      　<%= item.price %>
-      <% end %>
-    </div>
-    
-    <div>
-      <%= link_to "全ての商品を見る>", public_items_path %>
-    </div>
+
+
+        <div class="form-inline">
+          <% @items.each do |item| %>
+            <table class="ml-2">
+              <tbody>
+                <tr><td>
+                  <%= link_to public_item_path(item) do %>
+                  <%= image_tag item.get_image(150,150) %>
+                  <% end %>
+                </td></tr>
+                <tr><td><strong><%= item.name %></strong></td></tr>
+                <tr><td><strong>¥<%= item.price.to_s(:delimited) %></strong></td></tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+
 
   </div>
- </div>
+
+  <div class="row justify-content-end">
+    <strong><%= link_to "全ての商品を見る>", public_items_path %></strong>
+  </div>
+
 </div>
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
+

@@ -45,7 +45,9 @@
         </tbody>
     </table>
   </div>
-  <div class="mt-3">
-    <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+  <div class="footer container col-md-6 offset-md-3 py-2">
+    <div class="pagination justify-content-center">
+      <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+    </div>
   </div>
 </div>

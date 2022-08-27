@@ -2,10 +2,6 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   
   def show
-    @order = Order.find(params[:id])
-    @order_item = @order.order_items
-    @total = @order_item.inject(0) { |sum, item| sum + item.price * item.amount }
-    @postage = 800
   end
   
   def update

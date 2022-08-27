@@ -59,10 +59,9 @@ gem 'net-smtp'
 gem 'enum_help'
 
 gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
-
 gem 'ransack'
-
 gem 'pry-rails'
 

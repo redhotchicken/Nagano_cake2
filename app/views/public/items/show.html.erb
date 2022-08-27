@@ -32,7 +32,7 @@
 
 
                      <% if customer_signed_in? %>
-                        <%= f.select :amount,(1..5).to_a, include_blank:'個数選択' %>
+                        <%= f.select :amount,(1..50).to_a, include_blank:'個数選択' %>
                         <%= f.submit "カートに入れる", class:"btn btn-success" %>
                    <% end %>
                   <% end %>

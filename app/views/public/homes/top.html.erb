@@ -2,14 +2,18 @@
   <div class="row">
 
     <div class='col-md-2'>
-      <div class="text-center border border-dark">
-        <h6><strong>ジャンル検索</strong></h6>
-      </div>
-      <div class="border border-dark">
-        <% @genres.each do |genre| %>
-        <p class="ml-3"><%= genre.name %></p>
-        <% end %>
-      </div>
+      <table class="table table-bordered ml-1">
+        <thead>
+          <th>ジャンル一覧</th>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <th><%= genre.name %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
 
     <div class='col-md-9 offset-md-1'>
@@ -45,12 +49,10 @@
           <% end %>
         </div>
 
-
+        <div class="row justify-content-end">
+          <strong><%= link_to "全ての商品を見る>", public_items_path %></strong>
+        </div>
+        
+    </div>
   </div>
-
-  <div class="row justify-content-end">
-    <strong><%= link_to "全ての商品を見る>", public_items_path %></strong>
-  </div>
-
 </div>
-

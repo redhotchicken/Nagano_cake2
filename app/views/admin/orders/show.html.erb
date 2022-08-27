@@ -8,7 +8,7 @@
         <tr>
           <th>購入者</th>
           <td><u>
-            <%= link_to admin_customer_path(@order) do %>
+            <%= link_to admin_customer_path(@order), class: "text-dark" do %>
               <%= @order.customer.last_name %>
               <%= @order.customer.first_name %>
             <% end %>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <th>支払い方法</th>
-          <td><%= @order.payment_type %></td>
+          <td><%= @order.payment_type_i18n %></td>
         </tr>
         <tr>
           <th>注文ステータス</th>

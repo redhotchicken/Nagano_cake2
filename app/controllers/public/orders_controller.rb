@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
 
   def new
+    if current_customer.cart_items.blank?
+      redirect_to public_cart_items_path
+    end
     @order = Order.new
   end
 
@@ -17,7 +20,7 @@ class Public::OrdersController < ApplicationController
 
      elsif params[:order][:select_address] == "1"
        @order = Order.new(order_params)
-       @address = Delivery.find(params[:order][:delivery_id])
+       @delivery = Delivery.find(params[:order][:address_id])
        @order.post_code = @delivery.post_code
        @order.address = @delivery.address
        @order.name = @delivery.name

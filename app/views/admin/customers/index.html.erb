@@ -18,12 +18,12 @@
           <% @customers.each do |customers| %>
             <tr>
               <td><%= customers.id %></td>
-              <td>
+              <td><u>
                 <%= link_to admin_customer_path(customers), :style=>"color:black;" do %>
                   <%= customers.last_name %>
                   <%= customers.first_name %>
                 <% end %>
-              </td>
+              </td></u>
               <td><%= customers.email %></td>
               <% if customers.is_deleted %>
                 <td class="text-secondary">退会</td>

@@ -1,50 +1,35 @@
-<h2>会員情報編集</h2>
+<div class="container">
+  <div class='row'>
+    <h3 style="background-color:whitesmoke">配送先編集</h3>
+  </div>
 
-<table>
-  
-  <tr>
-    <th>氏名</th>
-    <th>フリガナ</th>
-    <th>郵便番号</th>
-    <th>住所</th>
-    <th>電話番号</th>
-    <th>メールアドレス</th>
-  </tr>
-  
-  <%=form_with model: @customer,url: customer_path, method: :patch do |f| %>
-  <tr>
-    <td>
-      <%= f.text_field :last_name %>
-      <%= f.text_field :first_name %>
-    </td>
-    
-    <td>
-      <%= f.text_field :last_kana %>
-      <%= f.text_field :first_kana %>
-    </td>
-    
-    <td>
-      <%= f.text_field :post_code %>
-    </td>
-    
-    <td>
-      <%= f.text_area :address %>
-    </td>
-    
-    <td>
-      <%= f.text_field :tell %>
-    </td>
-    
-    <td>
-      <%= f.text_field :email %>
-    </td>
-    
-  </tr>
-</table>
+    <%= form_with model: @delivery, url: public_delivery_path, method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <%= f.label :post_code,'郵便番号(ハイフンなし)', class:"col-3 offset-2 col-form-label" %>
+         <div class="col-md-3">
+          <%= f.text_field :post_code, class:"form-control" %>
+         </div>
+      </div>
+      <div class="form-group row">
+         <%= f.label :address, '住所', class:"col-3 offset-2 col-form-label" %>
+         <div class="col-md-5">
+         <%= f.text_area :address, class:"form-control" %>
+         </div>
+      </div>
+      <div class="form-group row">
+         <%= f.label :name, '宛名', class:"col-3 offset-2 col-form-label" %>
+          <div class="col-md-3">
+          <%= f.text_field :name, class:"form-control" %>
+          </div>
+          <div class="col">
+          <%= f.submit'変更内容を保存', class:'btn btn-sm btn-success' %>
+          </div>
 
-  <%= f.submit'編集内容を保存する', class:'btn btn-sm btn-success' %>
-  
-<% end %>
-  
-  <%= link_to "退会する", public_customers_quit, class:'btn btn-danger' %>
+      </div>
 
+      </form>
+    <% end %>
+
+  </div>
+</div>

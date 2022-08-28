@@ -3,20 +3,19 @@
     <span style="background-color:#eee">
       <strong>
         <%= @customer.last_name %>
-      　<%= @customer.first_name %>
-    　</strong>さんの
-    　<strong>会員情報編集</strong>
-  　</span>
+        <%= @customer.first_name %>
+      </strong>さんの
+      <strong>会員情報編集</strong>
+    </span>
   </h3>
   <div class='row'>
     <div class='col-md-6'>
-      
-      <table class="table table-borderless">
-        <tr>
-          <th>会員ID</th>
-          <td><%= @customer.id %></td>
-        </tr>
-        <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+      <%= form_with model: @customer, url: admin_customer_path(@customer), local: true, method: :patch do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th>会員ID</th>
+            <td><%= @customer.id %></td>
+          </tr>
           <tr>
             <th>氏名</th>
             <td><%= f.text_field :last_name %></td>
@@ -54,8 +53,8 @@
               <%= f.submit "変更を保存", class: "btn  btn-lg btn-success" %>
             </td>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>

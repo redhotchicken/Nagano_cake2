@@ -1,0 +1,35 @@
+<div class="container">
+  <div class='row'>
+    <h3 style="background-color:whitesmoke">配送先編集</h3>
+  </div>
+
+    <%= form_with model: @delivery, url: public_delivery_path, method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <%= f.label :post_code,'郵便番号(ハイフンなし)', class:"col-3 offset-2 col-form-label" %>
+         <div class="col-md-3">
+          <%= f.text_field :post_code, class:"form-control" %>
+         </div>
+      </div>
+      <div class="form-group row">
+         <%= f.label :address, '住所', class:"col-3 offset-2 col-form-label" %>
+         <div class="col-md-5">
+         <%= f.text_area :address, class:"form-control" %>
+         </div>
+      </div>
+      <div class="form-group row">
+         <%= f.label :name, '宛名', class:"col-3 offset-2 col-form-label" %>
+          <div class="col-md-3">
+          <%= f.text_field :name, class:"form-control" %>
+          </div>
+          <div class="col">
+          <%= f.submit'変更内容を保存', class:'btn btn-sm btn-success' %>
+          </div>
+
+      </div>
+
+      </form>
+    <% end %>
+
+  </div>
+</div>

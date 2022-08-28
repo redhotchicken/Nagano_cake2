@@ -1,0 +1,65 @@
+<div class="container">
+
+  <div class='row'>
+    <h3 style="background-color:whitesmoke">配送先登録/一覧</h3>
+  </div>
+
+    <%= form_with model: @delivery, url:public_deliveries_path, method: :post do |f| %>
+      <form>
+        <div class="form-group row">
+           <%= f.label :post_code,'郵便番号(ハイフンなし)', class:"col-3 offset-2 col-form-label" %>
+            <div class="col-md-4">
+             <%= f.text_field :post_code, placeholder:"0000000", class:"form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+           <%= f.label :address, '住所', class:"col-3 offset-2 col-form-label" %>
+             <div class="col-md-4">
+             <%= f.text_area :address, placeholder:"東京都渋谷区", class:"form-control" %>
+             </div>
+        </div>
+
+        <div class="form-group row">
+           <%= f.label :name, '宛名', class:"col-3 offset-2 col-form-label" %>
+             <div class="col-md-3">
+             <%= f.text_field :name, placeholder:"令和道子", class:"form-control" %>
+             </div>
+             <div class="col-md-4">
+              <%= f.submit "新規登録", class:"btn btn-success" %>
+             </div>
+        </div>
+      </form>
+    <% end %>
+</div>
+
+<div class="container">
+
+  <div class='row-mt-5'>
+    <div class="col">
+
+      <table border="1" cellpadding="10">
+        <thead>
+          <tr bgcolor="whitesmoke">
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+          <% @deliveries.each do |delivery| %>
+        <tbody>
+          <tr>
+            <td><%= delivery.post_code %></td>
+            <td><%= delivery.address %></td>
+            <td><%= delivery.name %></td>
+            <td class="text-center"><%= link_to "編集する", edit_public_delivery_path(delivery), class:"btn btn-success" %>
+                <%= link_to "削除する", public_delivery_path(delivery), method: :delete, class:"btn btn-danger" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+   </div>
+  </div>
+
+</div>
